@@ -1,10 +1,529 @@
-<html>
-    <head>
-        <title> hello World</title>
-    </head>
-    <body>
-        <h1>Hello, World!</h1>
-        <h2>Adithya</h2>
-        <h3>i am doing this changes in git hub</h3>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio website for Adithya showcasing skills, projects, and contact information."
+    />
+    <title>Adithya | Portfolio</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --bg-soft: #111827;
+        --panel: #1f2937;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #38bdf8;
+        --accent-strong: #0ea5e9;
+        --card: rgba(255, 255, 255, 0.04);
+        --border: rgba(148, 163, 184, 0.2);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, var(--bg), var(--bg-soft));
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1100px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        z-index: 10;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 72px;
+      }
+
+      .brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        color: var(--text);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 1.4rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 600;
+        transition: 0.2s ease;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: #082f49;
+      }
+
+      .btn-primary:hover,
+      .btn-primary:focus-visible {
+        background: var(--accent-strong);
+      }
+
+      .hero {
+        padding: 5rem 0 3rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .eyebrow {
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        line-height: 1.1;
+        margin: 0 0 1rem;
+      }
+
+      .highlight {
+        color: var(--accent);
+      }
+
+      .lead {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1.08rem;
+        margin: 0 0 1.5rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+      }
+
+      .profile-box {
+        text-align: center;
+      }
+
+      .avatar {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto 1rem;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), #a78bfa);
+        display: grid;
+        place-items: center;
+        font-size: 4rem;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 0.45rem 0.85rem;
+        border-radius: 999px;
+        background: rgba(56, 189, 248, 0.12);
+        color: var(--accent);
+        border: 1px solid rgba(56, 189, 248, 0.25);
+        font-size: 0.9rem;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+
+      .section-heading {
+        margin-bottom: 2rem;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin: 0 0 0.5rem;
+      }
+
+      .section-heading p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 1.5rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .stat {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--text);
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .skill-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 1.5rem;
+      }
+
+      .skill-item h3 {
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+      }
+
+      .skill-item ul {
+        margin: 0;
+        padding-left: 1.2rem;
+        color: var(--muted);
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .project-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      .project-visual {
+        height: 180px;
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(167, 139, 250, 0.2));
+        display: grid;
+        place-items: center;
+        font-size: 2.5rem;
+      }
+
+      .project-body {
+        padding: 1.25rem;
+      }
+
+      .project-body h3 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-body p {
+        color: var(--muted);
+        margin-bottom: 1rem;
+      }
+
+      .contact {
+        text-align: center;
+        padding-bottom: 5rem;
+      }
+
+      .contact-box {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--border);
+        padding: 1.5rem 0 2rem;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .nav {
+          flex-direction: column;
+          justify-content: center;
+          padding: 1rem 0;
+          gap: 0.75rem;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero-grid,
+        .about-grid,
+        .skills-grid,
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="#top" class="brand">ADITHYA</a>
+        <nav aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">Hello, I am</div>
+            <h1>
+              Adithya <span class="highlight">Developer</span>
+            </h1>
+            <p class="lead">
+              I build clean, efficient, and user-friendly digital experiences. I enjoy
+              turning ideas into responsive websites and practical solutions that feel smooth
+              and modern.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="#contact" class="btn" style="background: rgba(255,255,255,0.04); border-color: var(--border);">Contact Me</a>
+            </div>
+          </div>
+
+          <div class="hero-card profile-box" aria-label="Profile summary">
+            <div class="avatar" aria-hidden="true">A</div>
+            <div class="tag">Available for work</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-heading">
+            <h2>About Me</h2>
+            <p>Passionate about design, code, and continuous learning.</p>
+          </div>
+
+          <div class="grid about-grid">
+            <div class="card">
+              <p>
+                I am a web developer focused on learning and building strong user experiences.
+                My work combines creativity, structure, and functionality so the final result
+                feels polished and easy to use.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="stats" aria-label="Quick facts">
+                <div class="stat">
+                  <strong>2+</strong>
+                  Years Learning
+                </div>
+                <div class="stat">
+                  <strong>10+</strong>
+                  Projects
+                </div>
+                <div class="stat">
+                  <strong>100%</strong>
+                  Dedication
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Skills</h2>
+            <p>Tools and technologies I work with.</p>
+          </div>
+
+          <div class="grid skills-grid">
+            <article class="skill-item">
+              <h3>Frontend</h3>
+              <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+              </ul>
+            </article>
+
+            <article class="skill-item">
+              <h3>Design</h3>
+              <ul>
+                <li>Responsive Layouts</li>
+                <li>UI/UX Basics</li>
+                <li>Modern Styling</li>
+              </ul>
+            </article>
+
+            <article class="skill-item">
+              <h3>Workflow</h3>
+              <ul>
+                <li>Git & GitHub</li>
+                <li>Problem Solving</li>
+                <li>Version Control</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Projects</h2>
+            <p>Some of the work I have been building.</p>
+          </div>
+
+          <div class="grid projects-grid">
+            <article class="project-card">
+              <div class="project-visual" aria-hidden="true">🌐</div>
+              <div class="project-body">
+                <h3>Portfolio Website</h3>
+                <p>A clean personal portfolio with sections for about, skills, and project highlights.</p>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-visual" aria-hidden="true">📱</div>
+              <div class="project-body">
+                <h3>Responsive Landing Page</h3>
+                <p>A mobile-friendly layout designed for better user experience and readability.</p>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-visual" aria-hidden="true">⚙️</div>
+              <div class="project-body">
+                <h3>Web UI Practice</h3>
+                <p>Experimenting with modern interface patterns and polished visual design techniques.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container contact-box">
+          <div class="section-heading">
+            <h2>Contact</h2>
+            <p>Let’s connect and build something meaningful together.</p>
+          </div>
+
+          <a href="mailto:adithya@example.com" class="btn btn-primary">adithya@example.com</a>
+          <div class="contact-links">
+            <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© 2026 Adithya. All rights reserved.</div>
+    </footer>
+  </body>
 </html>
